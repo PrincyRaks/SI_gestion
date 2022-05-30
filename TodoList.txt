@@ -1,0 +1,5 @@
+1-Création page qui permet d'insérer l'année et mois (à faire)
+a)Insertion par date
+2-Devise
+3-Input compte qui permet de voir liste de compte en utilisant Ajax
+
