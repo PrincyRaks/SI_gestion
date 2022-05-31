@@ -26,14 +26,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="<?php echo site_url('Welcome/date') ?>" style="padding-top: 81px;margin-top: 18px;margin-left: 0px;padding-left: 47px;">
-                        <button class="btn btn-primary" type="button" style="margin-left: 0px;height: 53px;width: 138.6875px;">Ajouter exercice</button>
+                    <li class="nav-item"><a class="nav-link active" href="<?php echo site_url('Welcome/date') ?>" style="padding-top: 81px;margin-top: 18px;margin-left: 0px;padding-left: 47px;"><button class="btn btn-primary" type="button" style="margin-left: 0px;height: 53px;width: 138.6875px;">Ajouter exercice</button>
                             <div>
                                 <p></p>
                             </div>
-                        </a>
-                    </li>
+                        </a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html"><span></span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="login.html"><span style="margin-left: 60px;">Déconnecter</span></a></li>
@@ -51,24 +48,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>      
                     <div class="row">
                         <div class="col">
-                            <div id="floating-label-3" class="form-floating mb-3">
-                                <select name="mois" class="form-select" for="floatinginput" placeholder="HGsOFT" style="width: 165px;">
-                                    <optgroup label="Mois">            
+                            <div id="floating-label-3" class="form-floating mb-3"><select name="mois" class="form-select" for="floatinginput" placeholder="HGsOFT" style="width: 165px;">
+                                    <optgroup label="Mois">
+                                            
                                   <?php  for($i=1;$i<=12;$i++){ ?>
                                         <option>
                                   <?php  echo $i; ?>
-                                    <?php } ?>   
-                                    </option>
+                                    <?php } ?>
+                                    
+                                </option>
                                     </optgroup>
-                                </select>
-                            <label class="form-label" id="floating-label-4" for="floatinginput">Entrer le mois</label>
-                            </div>
+                                </select><label class="form-label" id="floating-label-4" for="floatinginput">Entrer le mois</label></div>
                         </div>
                     </div>
+                        
                     <div class="row">
                         <div class="col">
-                            <div>
-                                <input class="btn btn-primary" value="Valider" type="submit" style="margin-left: 43px;margin-top: 8px;"></input>
+                            <div><input class="btn btn-primary" value="Valider" type="submit" style="margin-left: 43px;margin-top: 8px;"></input>
+                               
+                            <p></p>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends CI_Controller {
     public function index(){
     	 
-        $this->load->view('index');
+        $this->load->view('Vue');
 
     
     }
@@ -27,8 +27,8 @@ class Welcome extends CI_Controller {
       $this->load->helper('url_helper');
        $data = array();
 
-            $data['info'] = $this->news_model->select_racine();
-
+            //$data['info'] = $this->news_model->select_racine();
+            $data['compte']=$this->news_model->select_plancompte();
       $this->load->view('reception2',$data);      
     }
 
@@ -53,31 +53,41 @@ class Welcome extends CI_Controller {
  
   
     public function mamadika_char(){
+      session_start();
       $this->load->model('news_model');
       $data=array();
-     $data['numero']=$_POST['isa'];
-      $data['val']=substr($data['numero'],2,1);
-      $data['un']='1';
-      if ($data['val']=='0') {
+     //$data['numero']=$_POST['isa'];
+     //$data['daty']='Mezana';
+     $data['jr']=$_SESSION['andro'];
+     $data['conca']=$data['jr'].'-'.$_POST['jour'];
+      //$data['val']=substr($data['numero'],2,1);
+      //$data['un']='1';
+      /*if ($data['val']=='0') {
          $data['val']=$data['un'];
                 
       }
       $data['chaine1']=substr($data['numero'],0,2);
       $data['chaine2']=substr($data['numero'],3);
-      $data['final']=$data['chaine1'].$data['val'].$data['chaine2'];
+      $data['final']=$data['chaine1'].$data['val'].$data['chaine2'];*/
       
 
  
 
       //$data['racines']=$_POST['raci'];
-      //$data['date']=$_POST['daty'];
+      $data['date']=$_POST['jour'];
       $data['refe']=$_POST['ref'];
        //$data['mv']=$_POST['mouv'];
-        $data['cmt']=$_POST['isa'];
+        //$data['cmt']=$_POST['isa'];
          $data['tier']=$_POST['tiers'];
           $data['libelle']=$_POST['libel'];
            $data['db']=$_POST['debit'];
       $data['cr']=$_POST['credit'];
+      
+      $data['kaonty']=$_POST['plan'];
+      $data['racine']=substr($data['kaonty'],0,1);
+      $data['nracine']=(int)$data['racine'];
+      //$data['compte']=$this->news_model->select_plancompte();
+      
 
 
   
@@ -88,12 +98,12 @@ class Welcome extends CI_Controller {
       } elseif ( ($data['db']!=0 && $data['cr']==0) || ($data['db']==0 && $data['cr']!=0)  /*($data['racines']==substr($data['numero'],0,1))*/ ) {
          echo "Insertion reussi";
          //$this->news_model->insert_compte($data['racines'],$data['date'],$data['refe'],$data['mv'],$data['cmt'],$data['tier'],$data['libelle'],$data['db'],$data['cr']);
-         $this->news_model->insert_compte( $data['refe'],$data['cmt'],$data['tier'],$data['libelle'],$data['db'],$data['cr']);
+         $this->news_model->insert_compte( $data['conca'],$data['refe'],$data['nracine'],$data['tier'],$data['libelle'],$data['db'],$data['cr']);
 
         }
         
       
-
+      
     
    $data['info_compte']=$this->news_model->select_compte();
    //$data['nb_numero']=strlen($data['numero']);
@@ -106,10 +116,12 @@ class Welcome extends CI_Controller {
     public function   maka_date(){
       $this->load->model('news_model');
       $data=array();
+      session_start();
      // $data['annee']=strval($_POST['anne']);
       //$data['moi']=strval($_POST['mois']);
-      $data['annee']=$_POST['date'];
-
+      $_SESSION['andro']=$_POST['date'];
+     // $_SESSION['andro']='Mezana';
+      $data['jr']=$_SESSION['andro'];
   
     
       

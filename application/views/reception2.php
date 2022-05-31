@@ -24,7 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 
 <body id="page-top">
-    <?php if(isset($annee)){echo $annee;}?>
+     
+    <?php if(isset($conca)){echo $conca;}?>
+    <?php if(isset($racine)){echo $racine;}?>
+    
 <form action="<?php echo site_url('Welcome/mamadika_char');?>" method="post"> 
     <div id="wrapper">
          
@@ -36,7 +39,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('Welcome/zoneliste');?>"><span>Ajouter</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('');?>"><span>Ajouter Racine</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('Welcome/result') ;?>"><span>Voir Ecriture</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('Welcome/finale') ;?>"><span>Voir Bilan</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('Welcome/index') ;?>"><i class="far fa-user-circle"></i><span>Deconnécter</span></a></li>
@@ -84,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <tr>
                                 <th style="width: 41.587px;">Jour</th>
                                 <th style="width: 114.487px;">Ref.Piece</th>
-                                <th style="width: 124.175px;">Compte</th>
+                                <th style="width: 124.175px;"><a href="<?php echo site_url('Welcome/zoneliste');?>">Compte</a></th>
                                 <th style="width: 164.663px;">Tiers</th>
                                 <th style="width: 238.262px;">Libelle</th>
                                 <th style="width: 143.35px;">
@@ -99,12 +101,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="width: 24.85px;"><input type="number" style="width: 49.6px;padding-left: 2px;margin-left: -9px;margin-bottom: -2px;margin-top: 4px;border-color: var(--bs-gray-300);height: 27px;"></td>
+                                <td style="width: 24.85px;"><input type="number" name="jour" style="width: 49.6px;padding-left: 2px;margin-left: -9px;margin-bottom: -2px;margin-top: 4px;border-color: var(--bs-gray-300);height: 27px;"></td>
                                 <td>
                                     <div class="form-floating mb-3"><input type="text" name="ref" class="form-control" placeholder="HGsOFT" style="height: 22px;"><label class="form-label" for="floatingInput" style="width: 110.775px;height: 37px;min-height: 3px;"></label></div>
                                 </td>
                                 <td>
-                                    <div class="form-floating mb-3"><input type="text" pattern="[0-9]{5}" maxlength="5" name="isa"class="form-control" placeholder="HGsOFT" style="height: 28px;"></div>
+                                    <div class="form-floating mb-3"><select name="plan">	<?php foreach ($compte as $row) { ?><option value="<?php echo $row['racine']; ?>"><?php echo $row['racine'].' - '.$row['intitule']; ?> </option><?php } ?></div>
                                 </td>
                                 <td>
                                     <div class="form-floating mb-3"><input type="text" name="tiers" class="form-control" placeholder="HGsOFT" style="height: 28px;"></div>
@@ -142,14 +144,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col1 col-xl-8">
 	 								  <table border="2">
 						  	        <tr>
-						          
+                                    <th>Date</th>
 						            <th>Reference</th>
-						          
-						           
-						            <th>Tiers</th>
+                                    <th>Compte</th>
+                                    <th>Tiers</th>
 						            <th>Libelle</th>
 						            <th>Debit</th>
 						            <th>Credit</th>
+						           
+						           
 						           
 						             
 						           
@@ -158,9 +161,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						      <?php if (isset($info_compte)) { ?>
 						        	<?php foreach ( $info_compte as $row) { ?>
 						           <tr>
-						                 
+                                   <td><?php echo $row['daty']; ?></td>
 						                <td><?php echo $row['ref']; ?></td>
-						           
+                                        <td><?php echo $row['id_compte']; ?></td>
 						               <!-- <td><?php /*echo $row['comptes']; */?></td>-->
 						                <td><?php echo $row['tiers']; ?></td>
 						                <td><?php echo $row['libelle']; ?></td>

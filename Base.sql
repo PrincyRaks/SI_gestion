@@ -10,6 +10,12 @@ intitule varchar(35)
 );
 
 
+Create table Tiers(
+Id_Tiers int not null primary key,
+racine int REFERENCES plancompte(racine),
+nom_tiers varchar(50)
+);
+
 Create table ecriture(
 
 Daty Date,
