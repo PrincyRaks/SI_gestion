@@ -32,10 +32,10 @@
        
         
 
-                public function insert_compte($ref,$comptes,$tiers,$libelle,$debit,$credit){
+                public function insert_compte($date,$ref,$compte,$tiers,$libelle,$debit,$credit){
                     try{
                     // $sql="INSERT INTO plancompte(racine,intitule)VALUES($rac,'$titre')";
-                        $sql=" INSERT INTO Compte(Ref,Tiers,Libelle,Debit,Credit)values( '$ref','$tiers','$libelle',$debit,$credit)";
+                        $sql=" INSERT INTO Compte (Daty,Ref,Id_compte,Tiers,Libelle,Debit,Credit)values( '$date','$ref',$compte,'$tiers','$libelle',$debit,$credit)";
                         //$sql=sprintf($sql, $this->db->escape($rac,$titre));
                     $this->db->query($sql);
                     }
@@ -76,6 +76,12 @@
                     $query=$this->db->query('Select * from balancer');
                     return $query->result_array();
                 }
+                public function select_plancompte(){
+                    $query= $this->db->query('Select * from plancompte');
+                    return $query->result_array();
+                }
+                
+                
 
     }
 ?>                        
